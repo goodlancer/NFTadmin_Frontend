@@ -22,6 +22,13 @@ export default new Vuex.Store({
     },
     SETLOGGED (state) {
       state.logged = true
+      localStorage.setItem('logged', true)
+    },
+  },
+  getters: {
+    isAuth: state => {
+      const auther = localStorage.getItem('logged')
+      return auther
     },
   },
   actions: {

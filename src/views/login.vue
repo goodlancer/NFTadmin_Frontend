@@ -78,7 +78,7 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
   export default {
     props: {
       header: {
@@ -87,6 +87,9 @@
       },
     },
     computed: {
+      ...mapGetters([
+        'isAuth',
+      ]),
       headerStyle () {
         return {
           backgroundSize: '100% 100%',
@@ -94,6 +97,12 @@
           height: '100vh',
         }
       },
+    },
+    mounted () {
+      if (this.isAuth) {
+        // location.href = '/dashboard'
+        this.$router.push('/dashboard')
+      }
     },
     data () {
       return {
